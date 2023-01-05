@@ -14,6 +14,7 @@ public class BJ2309 {
     private static final int DWARF_COUNT = 9;
     private static final int REAL_DWARF = 7;
     private static final int GOAL = 100;
+    private static boolean find = false;
     private static Function<String, Integer> toInt = Integer::parseInt;
 
     public static void main(String[] args) throws IOException {
@@ -33,6 +34,9 @@ public class BJ2309 {
     }
 
     private static void dfs(int n, int m, int index, int count) {
+        if(find){
+            return;
+        }
         if (count == m) {
             if (Arrays.stream(outputs).sum() == GOAL) {
                 for (int output : outputs) {
@@ -42,6 +46,7 @@ public class BJ2309 {
                     }
                     stringBuilder.append(output).append("\n");
                 }
+                find = true;
             }
             return;
         }
